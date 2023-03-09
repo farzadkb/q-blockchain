@@ -1,19 +1,5 @@
 <h1 align="center"> Q Blockchain </h1>
 
-
-## What we need and notes:
-
-* For your questions and need for help: [Telegram](https://t.me/+H_ecre-MCCg4ZTA0)
-* I've been following Q Blockchain since its no reward testnet
-* Think of what is done here as a recording. Registration ends December 31st, Testnet starts January 1st, lasts until March 31st
-* So running 4 months and 20 days is a high amount of time, the team says in their article that they will pay for it with rewards
-* I don't think it's a guarantee, it's your own risk, it's your personal opinion whether to participate in this test or not.
-* When the testnet is finished, it will be KYC.
-* Award period key details are available [article](https://medium.com/q-blockchain/q-blockchain-validator-onboarding-program-part-1-validator-incentivized-testnet-567ef6e4002e) choose.
-* Project discord: [Discord channel](https://discord.gg/pRkZRahJ)
-* Don't forget to fork and star the repo from the top right!
-* Do not forget to pull request what you see missing!
-
 ## System requirements:
 
 *NOTE: No information, tested manually
