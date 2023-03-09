@@ -1,44 +1,44 @@
 <h1 align="center"> Q Blockchain </h1>
 
 
-## İhtiyacımız olanlar ve notlar:
+## What we need and notes:
 
-* Bana sorularınız ve yardım ihtiyacınız için: [Telegram](https://t.me/+H_ecre-MCCg4ZTA0)
-* Q Blockchain'i ödülsüz testnetinden beri takip ediyorum
-* Burada yapılanlar kayıt gibi düşünün. Kayıt 31 Aralık'ta biter, Testnet 1 Ocak'ta başlar, 31 Mart'a kadar sürer
-* Yani 4 ay 20 gün çalıştırmak demek, yüksek bir süre, ekip makalesinde bunu ödüllerle karşılayacağını söylüyor
-* Ben garanti olduğunu düşünmüyorum, risk size kalmış, bu testnete katılıp katılmamak tamamen kişisel fikrinizdir
-* Testnet bitince KYC olacakmış.
-* Ödül dönemi kilit detayları var [makale](https://medium.com/q-blockchain/q-blockchain-validator-onboarding-program-part-1-validator-incentivized-testnet-567ef6e4002e) Katılmanın ne kadar mantıklı olduğunu siz seçin.
-* Proje discordu: [Discord kanalı](https://discord.gg/pRkZRahJ)
-* Repoyu sağ üstten forklayıp yıldızlamayı unutmayın!
-* Eksik gördüklerinizi pull request yapmayı unutmayın!
+* For your questions and need for help: [Telegram](https://t.me/+H_ecre-MCCg4ZTA0)
+* I've been following Q Blockchain since its no reward testnet
+* Think of what is done here as a recording. Registration ends December 31st, Testnet starts January 1st, lasts until March 31st
+* So running 4 months and 20 days is a high amount of time, the team says in their article that they will pay for it with rewards
+* I don't think it's a guarantee, it's your own risk, it's your personal opinion whether to participate in this test or not.
+* When the testnet is finished, it will be KYC.
+* Award period key details are available [article](https://medium.com/q-blockchain/q-blockchain-validator-onboarding-program-part-1-validator-incentivized-testnet-567ef6e4002e) choose.
+* Project discord: [Discord channel](https://discord.gg/pRkZRahJ)
+* Don't forget to fork and star the repo from the top right!
+* Do not forget to pull request what you see missing!
 
-## Sistem gereksinimleri:
+## System requirements:
 
-* NOT: Bilgi yok, manuel olarak test ettim
-* Hetzner kullandım.
-* Varsa 3 CPU işlemci garanti olur.
+*NOTE: No information, tested manually
+* I used Hetzner.
+* 3 CPU processors are guaranteed, if any.
 ```
-2 CPU
-2 RAM
+2 CPUs
+2 RAMs
 ```
 
-## Değişkenleri ayarlıyoruz:
+## We set the variables:
 
-* Bir şifre belirleyin
+* Set a password
 ```
-PASSWORD=Şifrebelirle
+PASSWORD=Set Password
 ```
-* ŞİFRE yazan yeri düzenleyin
+* Edit the PASSWORD
 ```
-echo "export PASSWORD=ŞİFRE" $HOME/.bash_profile
+echo "export PASSWORD=PASSWORD" $HOME/.bash_profile
 source $HOME/.bash_profile
 ```
 
-## Güncellemeleri tek tek yapınız
+## Make the updates one by one
 
-* Bazı güncellemelerde Y/N sorularında Y basıp ENTERLEYİN
+* Press Y and ENTER in Y/N questions in some updates
 ```
 sudo apt update
 ```
@@ -58,32 +58,32 @@ apt install screen
 sudo apt-get update && sudo apt install jq && sudo apt install apt-transport-https ca-certificates curl software-properties-common -y && curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add - && sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" && sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin && sudo apt-get install docker-compose-plugin
 ```
 
-## Binary ve pwd oluşturuyoruz:
+## We create binary and pwd:
 
-* Komutları tek tek giriniz
-* Şifre kısmını düzenleyiniz
+* Enter commands one by one
+* Edit the password part
 
 ```
 git clone https://gitlab.com/q-dev/testnet-public-tools.git
 cd testnet-public-tools/testnet-validator/
 mkdir keystore
 cd keystore/
-echo "ŞİFRE" >> pwd.txt
+echo "PASSWORD" >> pwd.txt
 ```
 
-## Cüzdan oluşturup bilgileri kaydedlim:
+## Let's create a wallet and save the information:
 
-* Oluşan 0xli cüzdanımıza token alalım: [Faucet](https://faucet.qtestnet.org/)
+* Let's get a token for our 0x wallet: [Faucet](https://faucet.qtestnet.org/)
 
 ```
-cd ..
+cd..
 docker run --entrypoint="" --rm -v $PWD:/data -it qblockchain/q-client:testnet geth account new --datadir=/data --password=/data/keystore/pwd.txt
 ```
 
-## Yapılandırma dosyasını düzenleyeceğiz:
+## We will edit the configuration file:
 
-* address kısmına 0xli olmayan keyi girelim
-* CTRL X Y ENTER ile çıkın sonra
+* Let's enter the non-0x key in the address section
+* Exit with CTRL X Y ENTER
 
 ```
 cp .env.example .env
@@ -92,79 +92,79 @@ nano .env
 
 ![image](https://user-images.githubusercontent.com/101149671/206860212-79018b15-b65d-4291-8054-8785b0078153.png)
 
-## Aynı işlem:
+## Same action:
 
-* addres ve password kısmını düzenleyin.
-* address 0xsiz adres, şifrede yukarda belirlemiştik. 
-* CTRL X Y ENTER ile çıkın sonra
+* Edit the address and password.
+* address 0xless address, we have specified above in the password.
+* Exit with CTRL X Y ENTER
 ```
-nano config.json
+nanoconfig.json
 ```
 ![image](https://user-images.githubusercontent.com/101149671/206860284-853e9661-3f8a-4d0d-b343-9adf93ff62ea.png)
 
-## Tokenlerimizi stakeleyelim
+## Let's stake our tokens
 
-* Bu komut çalışmazsa yukarda yapılandırma dosyaları (`.env` ve `config.json`) eksik yapmışsınız demektir.
+* If this command does not work, you have missing the configuration files (`.env` and `config.json`) above.
 
 ```
 docker run --rm -v $PWD:/data -v $PWD/config.json:/build/config.json qblockchain/js-interface:testnet validators.js
 ```
 
-## Şimdi private key oluşturuyoruz:
+## Now we create the private key:
 ```
-cd
+CD
 cd testnet-public-tools
 chmod +x run-js-tools-in-docker.sh
 ./run-js-tools-in-docker.sh
 npm install
 ```
-* Burada 0XLİCÜZDAN ve ŞİFRE kısmını düzenlemeyi unutmayın!
-* Bu işlem sonunda PK adlı klasör oluşacak
-* CTRL A D ile çıkın NPM içinden.
+* Don't forget to edit 0XLICUZDAN and PASSWORD here!
+* At the end of this process, a folder named PK will be created.
+* Exit NPM with CTRL A D.
 ```
 chmod +x extract-geth-private-key.js
-node extract-geth-private-key 0XLİCÜZDAN ../testnet-validator/ ŞİFRE
+node extract-geth-private-key 0XLİCÜZDAN ../testnet-validator/ PASSWORD
 ```
 
-## WinSCP veya Mobaxterm ile sunucunuza bağlanın:
+## Connect to your server with WinSCP or Mobaxterm:
 
-* dosya `/root/testnet-public-tools/js-tools` içinde olacak
-* İçine tıkladığımızda bize bir key vericek
+* file will be in `/root/testnet-public-tools/js-tools`
+* When we click inside it will give us a key
 
 ![image](https://user-images.githubusercontent.com/101149671/206860533-1c06a2ed-4f60-42b9-95e6-2ad3429a5127.png)
 
-## Şimdi bir Metamask cüzdanı lazım:
+## Now you need a Metamask wallet:
 
-* Bunun için isterseniz testnet cüzdanı kullanın veya yeni cüzdan açın
-* Sağ üstten profile tıklıyoruz ve hesabı içe aktar diyoruz
-* Az önce PK klasöründen aldığımız keyi girip hesabı oluşturuyoruz
+* For this, use a testnet wallet or open a new wallet.
+* Click the profile from the top right and click import account
+* Enter the key we just got from the PK folder and create the account
 
 ![image](https://user-images.githubusercontent.com/101149671/206860604-caebf5ca-f43d-4efd-9ce1-cf6a3e87fab2.png)
 
-## Daha sonra [buradan](https://itn.qdev.li/) başvuruyoruz
+## Then we refer to [here](https://itn.qdev.li/)
 
-* Testnet cüzdanınızı doğru olduğundan emin olun
-* Böyle bir görsel alacaksınız:
+* Make sure your testnet wallet is correct
+* You will get an image like this:
 ![image](https://user-images.githubusercontent.com/101149671/206860707-60d24966-f27c-4348-90b1-1fd45428df8a.png)
 
 
-## Burası kritik ve önemli:
+## This is critical and important:
 ```
-cd
+CD
 cd testnet-public-tools
 cd testnet-validator
 nano docker-compose.yaml
 ```
 
-* geth'nin virgüne gelin boşluk bırakın
-* " işareti ekleyip formda ki --ethstatslı komutu girin
-* girdikten sonra bir daha " işareti ekleyip , ekleyin ve boşluk bırakın
-* ÖRNEK:  `"geth", "--ethstats=ITN-RuesValidator-9:qstats-testnet@stats.qtestnet.org", ..`
-* CTRL X Y ENTER ile çıkın
+* point to geth's comma, leave a space
+Add the * " sign and enter the command with --ethstats in the form
+After entering *, add " sign again, add and leave a space
+* EXAMPLE: `"geth", "--ethstats=ITN-RuesValidator-9:qstats-testnet@stats.qtestnet.org", ..`
+* Exit with CTRL X Y ENTER
 
 ![image](https://user-images.githubusercontent.com/101149671/206860778-bd49a825-7c2c-4d68-b5c8-b7a3dd2a2cf4.png)
 
-## Başlatıyoruz:
+## We launch:
 ```
 screen -S q
 ```
@@ -175,26 +175,26 @@ docker compose up -d
 docker compose logs -f
 ```
 
-## Explorerdan kontrol edelim:
+## Let's check from explorer:
 
-* [Explorer](https://stats.qtestnet.org/) biraz yavaş ve ağır :)
-* Rengibize göre:
-* Yeşil olmak için bi yarım saat (tahmini) falan beklemek gerekiyor 
-* Zamanla kırmızı-sarı-yeşil oluyorsunuz
+* [Explorer](https://stats.qtestnet.org/) is a bit slow and heavy :)
+* Color by us:
+* It is necessary to wait for half an hour (estimated) to become green
+* You become red-yellow-green over time
 ```
-🟢 - Eşleştin
-🟡 - Eşleşiyor biraz bekle
-🔴 - Eşleşme arıyor
+🟢 - You are matched
+🟡 - Matching wait a bit
+🔴 - Searching for matches
 ```
 
--Explorerda kendi validatör adınızı bulmakta zorlanıyorsanız ctrl+f yaptıktan sonra kendi adınızı yazıp bulabilirsiniz. Ardından aşağıda işaretlediğim, kendi adınızın yanındaki dairenin üzerine geldiğinizde ''click to pin'' yazısına tıkladığınızda artık kendi adınızı en üstte görebileceksiniz :)
+-If you have trouble finding your own validator name in Explorer, you can type your own name after ctrl+f and find it. Then, when you hover over the circle next to your own name, which I marked below, and click on the text "click to pin", you will now be able to see your name at the top :)
 
 ![kkk](https://user-images.githubusercontent.com/98269269/207414985-60d423e6-facb-4292-be91-999209e9fe29.png)
 
 
-Eğer formu doldururken aşağıdaki hata ile karşılaşırsanız kullandığınız Identify adında değişiklik yapmanız veya adreslerinizi kontrol etmeniz gerekiyor. Kullandığınız karakterlerde değişiklik yaparak veya validatör adresinizi kontrol ederek bu sorunu çözebilirsiniz.
+If you encounter the following error while filling out the form, you need to change the Identify name you use or check your addresses. You can solve this problem by making changes to the characters you use or by checking your validator address.
 
 ![dff](https://user-images.githubusercontent.com/98269269/207157285-76e4d6b2-bf65-4155-84b7-59f36fbae211.jpg)
 
 
-## Hastalıklar cirit atıyor, dikkat edin kendinize!
+## Diseases are raging, take care of yourself!
