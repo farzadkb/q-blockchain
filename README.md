@@ -6,8 +6,9 @@
 * I used Hetzner.
 * 3 CPU processors are guaranteed, if any.
 ```
-2 CPUs
-2 RAMs
+4 vCPUs
+8GB RAM
+250GB SSD
 ```
 
 ## We set the variables:
