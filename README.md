@@ -2,9 +2,6 @@
 
 ## System requirements:
 
-*NOTE: No information, tested manually
-* I used Hetzner.
-* 3 CPU processors are guaranteed, if any.
 ```
 4 vCPUs
 8GB RAM
